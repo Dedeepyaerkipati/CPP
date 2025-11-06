@@ -1,0 +1,18 @@
+CREATE TABLE users(
+id NUMBER PRIMARY KEY,
+name VARCHAR2(30) NOT NULL,
+email VARCHAR2(20) UNIQUE NOT NULL ,
+age NUMBER CHECK(age>0 AND age<120)
+);
+ INSERT INTO users VALUES(1,'Alice','alice@gamil.com',17);--works
+  INSERT INTO users  VALUES(1,'Bob','alice@gamil.com',18); --works
+   INSERT INTO users  (id,name,age)VALUES(3,'charlie',24);  --Fails
+DROP TABLE USERS;
+SELECT * FROM users;
+
+-- command to check what are the constraints
+-- added to columns in particular table
+SELECT constraint_name, constraint_type
+FROM user_constraints
+WHERE table_name='USERS';
+
