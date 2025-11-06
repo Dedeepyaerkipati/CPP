@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cmath> // for sqrt()
+using namespace std;
+
+// Abstract class
+class Shape {
+public:
+    // Pure virtual function
+    virtual void area() = 0;  
+};
+
+// Derived class for Square
+class Square : public Shape {
+    float side;
+public:
+    void getData() {
+        cout << "Enter side of square: ";
+        cin >> side;
+    }
+    void area() override {
+        cout << "Area of Square = " << side * side << endl;
+    }
+};
+
+// Derived class for Triangle
+class Triangle : public Shape {
+    float base, height;
+public:
+    void getData() {
+        cout << "Enter base and height of triangle: ";
+        cin >> base >> height;
+    }
+    void area() override {
+        cout << "Area of Triangle = " << 0.5 * base * height << endl;
+    }
+};
+
+int main() {
+    Shape *shape;  // base class pointer
+
+    Square s;
+    Triangle t;
+
+    // Calculate area of square
+    shape = &s;
+    s.getData();
+    shape->area();
+
+    // Calculate area of triangle
+    shape = &t;
+    t.getData();
+    shape->area();
+
+    return 0;
+}
